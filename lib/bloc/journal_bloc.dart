@@ -27,7 +27,7 @@ class JournalBloc {
 
     _allJournals.sort((a, b) => b.createdDate.compareTo(a.createdDate));
 
-    _allJournals.add(Journal(fontFamily: noto, content: "他们所有的设备和仪器彷佛都是有生命的。", createdDate: DateTime.now().subtract(Duration(days: 400)), id: 99));
+    //_allJournals.add(Journal(fontFamily: noto, content: "他们所有的设备和仪器彷佛都是有生命的。", createdDate: DateTime.now().subtract(Duration(days: 400)), id: 99));
 //    String str = "Ab am es angenommen da halboffene uberwunden. Flei habe soll oder das alt. Ehe umwolkt kapelle dir diesmal stiefel bosheit. "
 //        "Argerlich wunderbar hol verstehen nebendran senkrecht sie blo wie. Gebaut wahres madele seines gro vom ihm mutter. "
 //        "Fragen und minute ruhten mussen uhr. Te du um moge leer heut zu. Freute in ja je braves leicht. "
