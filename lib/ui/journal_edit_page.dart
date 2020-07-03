@@ -320,14 +320,14 @@ class JournalEditPageState extends State<JournalEditPage> {
           context: context,
           builder: (_) => CupertinoAlertDialog(
                 title: Text(
-                  'Access denied',
-                  style: TextStyle(fontFamily: 'SF Pro', fontWeight: FontWeight.bold),
+                  '无权限',
+                  style: TextStyle(fontFamily: 'noto', fontWeight: FontWeight.bold),
                 ),
-                content: Text('Permission to access photo library is not granted.'),
+                content: Text('无相册权限.'),
                 actions: <Widget>[
                   CupertinoDialogAction(
                     child: Text(
-                      'Okay',
+                      '好',
                       style: TextStyle(color: Colors.blue),
                     ),
                     onPressed: () {
@@ -449,13 +449,13 @@ class JournalEditPageState extends State<JournalEditPage> {
                       this.imageBytes = null;
                     });
                   },
-                  child: Text('Delete'))
+                  child: Text('删除'))
             ],
             cancelButton: CupertinoActionSheetAction(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Cancel')),
+                child: Text('取消')),
           );
         });
   }

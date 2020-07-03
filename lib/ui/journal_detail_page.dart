@@ -36,7 +36,6 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
       });
     });
 
-
     scrollController.addListener(onScrolled);
   }
 
@@ -50,7 +49,6 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
   Widget build(BuildContext context) {
     fontColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black;
     subTextColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white54 : Colors.black54;
-
 
     return Hero(
       tag: widget.journal.id,
@@ -148,15 +146,15 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
         context: context,
         builder: (_) => CupertinoAlertDialog(
               title: Text(
-                'Delete this journal',
-                style: TextStyle(fontFamily: 'SF Pro', fontWeight: FontWeight.bold),
+                '删除',
+                style: TextStyle(fontFamily: 'noto', fontWeight: FontWeight.bold),
               ),
-              content: Text('Are you sure you want to permanently delete this journal?'),
+              content: Text('确定吗?'),
               actions: <Widget>[
                 CupertinoDialogAction(
                   child: Text(
-                    'Yes',
-                    style: TextStyle(color: Colors.red),
+                    '是',
+                    style: TextStyle(color: Colors.red, fontFamily: 'noto'),
                   ),
                   onPressed: () {
                     journalBloc.removeJournal(widget.journal);
@@ -166,8 +164,8 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
                 ),
                 CupertinoDialogAction(
                     child: Text(
-                      'No',
-                      style: TextStyle(fontFamily: 'SF Pro', fontWeight: FontWeight.bold),
+                      '否',
+                      style: TextStyle(fontFamily: 'noto', fontWeight: FontWeight.bold),
                     ),
                     onPressed: () {
                       Navigator.pop(context);
