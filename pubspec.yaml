@@ -67,6 +67,12 @@ flutter:
     - family: liu
       fonts:
         - asset: fonts/liu.ttf
+    - family: zhi
+      fonts:
+        - asset: fonts/zhi.ttf
+    - family: long
+      fonts:
+        - asset: fonts/long.ttf
 #        - asset: fonts/NewYorkExtraLarge-Bold.otf
 #          weight: 700
 #    - family: SF Pro

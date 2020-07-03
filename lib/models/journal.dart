@@ -11,11 +11,15 @@ export 'package:jiba/helpers/datetime_helpers.dart';
 const String noto = 'noto';
 const String ma = 'ma';
 const String liu = 'liu';
+const String zhi = 'zhi';
+const String long = 'long';
 
 const Map<String, String> fontNames = {
   'noto':'笔记',
   'ma':'飘逸',
   'liu':'放纵',
+  'zhi':'随性',
+  'long':'得体'
 };
 
 class Journal extends Comparable<Journal> {

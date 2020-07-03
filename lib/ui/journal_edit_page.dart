@@ -39,6 +39,7 @@ class JournalEditPageState extends State<JournalEditPage> {
 
   double elevation = 0;
   Color appBarColor = Colors.transparent;
+  Color fontColor, subTextColor, dropdownColor;
 
   double locationOpacity = 0;
   double dateOpacity = 0;
@@ -109,6 +110,10 @@ class JournalEditPageState extends State<JournalEditPage> {
 
   @override
   Widget build(BuildContext context) {
+    dropdownColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.grey : Colors.white;
+    fontColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black;
+    subTextColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white54 : Colors.black54;
+
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -138,7 +143,7 @@ class JournalEditPageState extends State<JournalEditPage> {
                         child: AppBar(
                           leading: IconButton(icon: Icon(Icons.chevron_left), onPressed: onBackPressed),
                           iconTheme: IconThemeData(
-                            color: Colors.black, //change your color here
+                            color: fontColor, //change your color here
                           ),
                           elevation: elevation,
                           backgroundColor: appBarColor,
@@ -150,26 +155,29 @@ class JournalEditPageState extends State<JournalEditPage> {
                                   AnimatedOpacity(
                                     duration: Duration(milliseconds: 600),
                                     opacity: locationOpacity,
-                                    child: Text('', style: smallTextStyle),
+                                    child: Text('',
+                                        style: TextStyle(color: fontColor, fontSize: 14, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal)),
                                   ),
                                   Spacer(),
                                   AnimatedOpacity(
                                     duration: Duration(milliseconds: 600),
                                     opacity: dateOpacity,
-                                    child: Text(DateTime.now().toDisplayString(), style: smallTextStyle),
+                                    child: Text(DateTime.now().toDisplayString(),
+                                        style: TextStyle(color: fontColor, fontSize: 14, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal)),
                                   ),
                                 ],
                               )),
                           actions: <Widget>[
                             DropdownButton<String>(
+                              dropdownColor: dropdownColor,
                               value: weatherCode,
                               icon: Icon(
                                 Icons.arrow_downward,
-                                color: Colors.black,
+                                color: fontColor,
                               ),
                               iconSize: 18,
                               underline: Divider(
-                                color: Colors.black,
+                                color: fontColor,
                               ),
                               onChanged: onWeatherChanged,
                               items: <String>[
@@ -204,22 +212,23 @@ class JournalEditPageState extends State<JournalEditPage> {
                               width: 12,
                             ),
                             DropdownButton<String>(
+                              dropdownColor: dropdownColor,
                               value: dropdownFontFamilyValue,
                               icon: Icon(
                                 Icons.arrow_downward,
-                                color: Colors.black,
+                                color: fontColor,
                               ),
                               iconSize: 18,
                               underline: Divider(
-                                color: Colors.black,
+                                color: fontColor,
                               ),
                               onChanged: onFontChanged,
-                              items: <String>[noto, ma, liu].map<DropdownMenuItem<String>>((String value) {
+                              items: fontNames.keys.toList().map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Text(
                                     fontNames[value],
-                                    style: TextStyle(color: Colors.black, fontFamily: value),
+                                    style: TextStyle(color: fontColor, fontFamily: value),
                                   ),
                                 );
                               }).toList(),
@@ -251,7 +260,7 @@ class JournalEditPageState extends State<JournalEditPage> {
                               controller: textEditingController,
                               minLines: 40,
                               maxLines: 50,
-                              cursorColor: Colors.black,
+                              cursorColor: fontColor,
                               decoration: InputDecoration(
                                 focusColor: Colors.transparent,
                                 fillColor: Colors.transparent,
@@ -263,7 +272,7 @@ class JournalEditPageState extends State<JournalEditPage> {
                                   borderSide: BorderSide.none,
                                 ),
                               ),
-                              style: TextStyle(fontSize: 24, fontFamily: dropdownFontFamilyValue),
+                              style: TextStyle(fontSize: 24, fontFamily: dropdownFontFamilyValue, color: fontColor),
                             ),
                           )
                         ],
