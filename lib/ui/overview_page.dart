@@ -11,6 +11,7 @@ import 'package:jiba/bloc/journal_bloc.dart';
 class OverviewPage extends StatelessWidget {
   final String displayString;
   final ScrollController secondaryPageScrollController = ScrollController();
+  Color fontColor;
 
   ///The [elevation] value for the [AppBar] on [secondaryPage]
   double elevation = 0;
@@ -32,11 +33,14 @@ class OverviewPage extends StatelessWidget {
           duration: Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
     });
 
+    Color backgroundColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.black : Colors.white;
+    fontColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black;
+
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: backgroundColor,
         appBar: AppBar(
           titleSpacing: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: backgroundColor,
           elevation: elevation,
           centerTitle: true,
           title: Container(
@@ -53,7 +57,7 @@ class OverviewPage extends StatelessWidget {
                             e,
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.black,
+                              color: fontColor,
                             ),
                             textAlign: TextAlign.center,
                           ),
@@ -81,7 +85,7 @@ class OverviewPage extends StatelessWidget {
                           child: Center(
                             child: Text(
                               displayString,
-                              style: TextStyle(color: Colors.grey, fontWeight: FontWeight.normal),
+                              style: TextStyle(color: fontColor, fontWeight: FontWeight.normal),
                             ),
                           ),
                         )
@@ -115,13 +119,14 @@ class OverviewPage extends StatelessWidget {
   List<Widget> buildChildren(Map<int, List<Journal>> allJournalsByYear, BuildContext context) {
     List<Widget> children = List<Widget>();
 
+
     if (allJournalsByYear.isEmpty) {
       children.add(SizedBox(
         height: 24,
         child: Center(
           child: Text(
             "${DateTime.now().year}",
-            style: TextStyle(color: Colors.black, fontSize: 18),
+            style: TextStyle(color: fontColor, fontSize: 18),
           ),
         ),
       ));
@@ -150,7 +155,7 @@ class OverviewPage extends StatelessWidget {
         child: Center(
           child: Text(
             year.toString(),
-            style: TextStyle(color: Colors.black, fontSize: 18),
+            style: TextStyle(color: fontColor, fontSize: 18),
           ),
         ),
       ));

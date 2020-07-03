@@ -17,6 +17,7 @@ class MonthOverviewCard extends StatelessWidget {
   final int maxLength;
   final int minLength;
   final JournalPressedCallBack onJournalPressed;
+  Color fontColor;
 
   MonthOverviewCard({this.journals, this.year, this.onJournalPressed})
       : maxLength = _findMaxLength(journals),
@@ -24,6 +25,8 @@ class MonthOverviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    fontColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black;
+
     return Container(
       width: MediaQuery.of(context).size.width,
       height: (MediaQuery.of(context).size.width / 7) * 74 * (this.year == DateTime.now().year ? DateTime.now().month / 12 : 1),
@@ -49,7 +52,7 @@ class MonthOverviewCard extends StatelessWidget {
 
     children.add(Container(
         child: Center(
-      child: Text(_intToMonth(date.month)),
+      child: Text(_intToMonth(date.month), style: TextStyle(color: fontColor)),
     )));
 
     for (var _ in Iterable.generate(3)) {
@@ -65,7 +68,7 @@ class MonthOverviewCard extends StatelessWidget {
     if (tempJournal == null) {
       children.add(Container(
         child: Center(
-          child: Text(date.day.toString()),
+          child: Text(date.day.toString(), style: TextStyle(color: fontColor)),
         ),
       ));
     } else {
@@ -98,7 +101,7 @@ class MonthOverviewCard extends StatelessWidget {
 
         children.add(Container(
             child: Center(
-          child: Text(_intToMonth(date.month)),
+          child: Text(_intToMonth(date.month), style: TextStyle(color: fontColor)),
         )));
 
         for (var _ in Iterable.generate(3)) {
@@ -111,7 +114,7 @@ class MonthOverviewCard extends StatelessWidget {
 
         if (tempJournal == null) {
           children.add(Container(
-            child: Center(child: Text(date.day.toString())),
+            child: Center(child: Text(date.day.toString(), style: TextStyle(color: fontColor))),
           ));
 
           continue;
@@ -123,7 +126,7 @@ class MonthOverviewCard extends StatelessWidget {
       } else {
         if (tempJournal == null) {
           children.add(Container(
-            child: Center(child: Text(date.day.toString())),
+            child: Center(child: Text(date.day.toString(), style: TextStyle(color: fontColor))),
           ));
 
           continue;

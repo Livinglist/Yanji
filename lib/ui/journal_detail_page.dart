@@ -24,6 +24,7 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
   final ScrollController scrollController = ScrollController();
   double elevation = 0;
   Color appBarColor = Colors.transparent;
+  Color fontColor, subTextColor;
 
   @override
   void initState() {
@@ -47,6 +48,10 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
 
   @override
   Widget build(BuildContext context) {
+    fontColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black;
+    subTextColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white54 : Colors.black54;
+
+
     return Hero(
       tag: widget.journal.id,
       child: Scaffold(
@@ -55,7 +60,7 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
               child: AppBar(
                 backgroundColor: appBarColor,
                 elevation: elevation,
-                iconTheme: IconThemeData(color: Colors.black),
+                iconTheme: IconThemeData(color: fontColor),
                 actions: <Widget>[
                   IconButton(
                     icon: Icon(widget.journal.isBookmarked ? Icons.bookmark : Icons.bookmark_border),
@@ -72,7 +77,7 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
                     children: <Widget>[
                       Text(
                         '',
-                        style: TextStyle(color: Colors.black54, fontSize: 14, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal),
+                        style: TextStyle(color: subTextColor, fontSize: 14, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal),
                       ),
                       Spacer(),
                       Container(
@@ -82,7 +87,7 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
                       ),
                       Text(
                         widget.journal.createdDate.toDisplayString(),
-                        style: TextStyle(color: Colors.black54, fontSize: 14, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal),
+                        style: TextStyle(color: subTextColor, fontSize: 14, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal),
                       ),
                     ],
                   ),
@@ -122,7 +127,7 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
                       width: MediaQuery.of(context).size.width,
                       child: Text(
                         widget.journal.content ?? '',
-                        style: TextStyle(fontSize: 24, color: Colors.black, fontFamily: widget.journal.fontFamily, fontWeight: FontWeight.normal),
+                        style: TextStyle(fontSize: 24, color: fontColor, fontFamily: widget.journal.fontFamily, fontWeight: FontWeight.normal),
                       ),
                     ))
               ],

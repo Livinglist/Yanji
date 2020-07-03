@@ -16,6 +16,8 @@ class StatPage extends StatefulWidget {
 class _StatPageState extends State<StatPage> {
   @override
   Widget build(BuildContext context) {
+    Color fontColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black;
+
     return Scaffold(
       backgroundColor: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.black : Colors.white,
       body: SingleChildScrollView(
@@ -31,15 +33,15 @@ class _StatPageState extends State<StatPage> {
                   return ListTile(
                     leading: Icon(
                       Icons.collections_bookmark,
-                      color: Colors.black,
+                      color: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black,
                     ),
                     title: Text(
                       '書籤',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold, color: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black),
                     ),
                     trailing: Text(
                       snapshot.data.where((element) => element.isBookmarked).length.toString(),
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold, color: fontColor),
                     ),
                     onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (_) => BookmarksPage())),
                   );

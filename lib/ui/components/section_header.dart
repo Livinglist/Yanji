@@ -13,7 +13,11 @@ class SectionHeader extends StatelessWidget {
         alignment: Alignment.centerLeft,
         child: Text(
           headerText,
-          style: TextStyle(color: Colors.black, fontSize: 64, fontWeight: FontWeight.w900, fontFamily: 'noto'),
+          style: TextStyle(
+              color: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black,
+              fontSize: 64,
+              fontWeight: FontWeight.w900,
+              fontFamily: 'noto'),
         ),
       ),
     );
