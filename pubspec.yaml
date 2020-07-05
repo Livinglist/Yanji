@@ -29,6 +29,7 @@ dependencies:
   image_picker: 0.6.3+1
   transparent_image: 1.0.0
   photo_view: 0.9.2
+  app_review: 1.1.2
   flutter:
     sdk: flutter
 

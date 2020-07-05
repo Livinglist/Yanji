@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:app_review/app_review.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -37,6 +38,8 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
     });
 
     scrollController.addListener(onScrolled);
+
+    AppReview.requestReview;
   }
 
   @override
@@ -129,7 +132,8 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
                             fontSize: widget.journal.fontFamily == noto ? 18 : 24,
                             color: fontColor,
                             fontFamily: widget.journal.fontFamily,
-                            fontWeight: FontWeight.normal),textAlign: widget.journal.textAlign,
+                            fontWeight: FontWeight.normal),
+                        textAlign: widget.journal.textAlign,
                       ),
                     ))
               ],
