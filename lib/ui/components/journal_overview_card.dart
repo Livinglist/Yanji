@@ -77,7 +77,7 @@ class _JournalOverviewCardState extends State<JournalOverviewCard> with SingleTi
                 child: Text(
                   widget.journal.content ?? '',
                   maxLines: maxLines,
-                  style: TextStyle(fontSize: 24, fontFamily: widget.journal.fontFamily, fontWeight: FontWeight.normal),
+                  style: TextStyle(fontSize: 18, fontFamily: widget.journal.fontFamily, fontWeight: FontWeight.normal),
                 ),
               ),
               SizedBox(
