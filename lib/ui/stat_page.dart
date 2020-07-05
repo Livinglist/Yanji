@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:jiba/bloc/journal_bloc.dart';
+import 'package:jiba/ui/components/activity_panel.dart';
 import 'package:jiba/ui/components/journal_overview_card.dart';
+import 'package:jiba/ui/year_page.dart';
 import 'components/section_header.dart';
 import 'bookmarks_page.dart';
 import 'package:jiba/helpers/list_helpers.dart';
@@ -49,11 +51,29 @@ class _StatPageState extends State<StatPage> {
                             color: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black),
                       ),
                       trailing: Text(
-                        snapshot.data.where((element) => element.isBookmarked).length.toString(),
+                        snapshot.data.where((element) => element.isBookmarked).length.toString() + ' 篇',
                         style: TextStyle(fontWeight: FontWeight.bold, color: fontColor),
                       ),
                       onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (_) => BookmarksPage())),
                     ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.list,
+                        color: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black,
+                      ),
+                      title: Text(
+                        '歷年',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black),
+                      ),
+                      trailing: Text(
+                        snapshot.data.length.toString() + ' 篇',
+                        style: TextStyle(fontWeight: FontWeight.bold, color: fontColor),
+                      ),
+                      onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (_) => YearPage(journals: snapshot.data))),
+                    ),
+                    ActivityPanel(journals: snapshot.data),
                     SectionHeader(
                       headerText: "过往今日",
                     ),

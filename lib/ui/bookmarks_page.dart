@@ -38,7 +38,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
             var bookmarkedJournal = snapshot.data.where((e) => e.isBookmarked);
             if (bookmarkedJournal.isEmpty) {
               return Center(
-                child: Text('¯\\_(ツ)_/¯ No bookmarks.'),
+                child: Text('空'),
               );
             } else {
               print("has data");
@@ -52,7 +52,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
               );
             }
           } else {
-            return Container(child: Text('asdas'),);
+            return Container(child: Text(''),);
           }
         },
       ),
