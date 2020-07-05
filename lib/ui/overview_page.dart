@@ -10,7 +10,7 @@ import 'package:jiba/bloc/journal_bloc.dart';
 
 class OverviewPage extends StatelessWidget {
   final String displayString;
-  final ScrollController secondaryPageScrollController = ScrollController();
+  final ScrollController secondaryPageScrollController = ScrollController(initialScrollOffset: 0);
   Color fontColor;
 
   ///The [elevation] value for the [AppBar] on [secondaryPage]
@@ -118,7 +118,6 @@ class OverviewPage extends StatelessWidget {
 
   List<Widget> buildChildren(Map<int, List<Journal>> allJournalsByYear, BuildContext context) {
     List<Widget> children = List<Widget>();
-
 
     if (allJournalsByYear.isEmpty) {
       children.add(SizedBox(

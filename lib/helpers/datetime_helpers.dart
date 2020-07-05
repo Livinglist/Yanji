@@ -71,13 +71,15 @@ extension DatetimeStringify on DateTime {
   String _dayToChineseString(int num) {
     String str = '';
 
-    if(num > 30){
+    if (num > 30) {
       str = '三十' + _numToChineseString(num.toString()[1]);
-    }if(num > 20){
+    }
+    if (num > 20) {
       str = '二十' + _numToChineseString(num.toString()[1]);
-    }if(num > 30){
+    }
+    if (num > 30) {
       str = '十' + _numToChineseString(num.toString()[1]);
-    }else{
+    } else {
       str = _numToChineseString(num.toString()[0]);
     }
 
@@ -131,11 +133,10 @@ extension DatetimeStringify on DateTime {
     if (this.year == dateTime.year && this.difference(dateTime).inDays.abs() <= 6) {
       if (this.weekday == dateTime.weekday) return true;
       var weekDay = this.weekday;
-      var day = this.day;
-      var upper = day + (7 - weekDay);
-      var lower = day - weekDay + 1;
+      var upper = this.add(Duration(days: 7 - weekDay));
+      var lower = this.subtract(Duration(days: weekDay));
 
-      if (dateTime.day >= lower && dateTime.day <= upper) {
+      if (dateTime.isAfter(lower) && dateTime.isBefore(upper)) {
         return true;
       } else {
         return false;

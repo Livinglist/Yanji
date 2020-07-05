@@ -109,12 +109,6 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
   }
 
   Widget buildMainView(List<Journal> journals) {
-//    if (journals.isNotEmpty) {
-//      print("the id of first journal is${journals.first.id}");
-//      this.hasIncompleteJournal = journals.first.createdDate.isTheSameDay(DateTime.now());
-//      this.tempJournal = hasIncompleteJournal ? journals.first : null;
-//    }
-
     Widget fab = AnimatedBuilder(
       animation: controller,
       child: Transform.scale(
@@ -285,7 +279,7 @@ class SectionHeader extends StatelessWidget {
               color: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black,
               fontSize: 64,
               fontWeight: FontWeight.w900,
-              fontFamily: 'noto'),
+              fontFamily: noto),
         ),
       ),
     );

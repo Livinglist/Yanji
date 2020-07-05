@@ -86,7 +86,7 @@ class Journal extends Comparable<Journal> {
   Map<String, dynamic> toMap() => {
         'Id': id,
         'Content': content,
-        'CreatedDateTime': _createdDate.toString(),
+        'CreatedDateTime': _createdDate.millisecondsSinceEpoch,
         'Location': location,
         'Longitude': longitude,
         'Latitude': latitude,
@@ -99,7 +99,7 @@ class Journal extends Comparable<Journal> {
   Journal.fromMap(Map map) {
     this.id = map['Id'] as int;
     this.content = map['Content'];
-    this._createdDate = (map['CreatedDateTime'] as String).isEmpty ? DateTime.now() : DateTime.parse(map['CreatedDateTime']);
+    this._createdDate = (map['CreatedDateTime'] as int) == null ? DateTime.now() : DateTime.fromMillisecondsSinceEpoch(map['CreatedDateTime']);
     this.location = map['Location'];
     this.longitude = map['Longitude'] as double;
     this.latitude = map['Latitude'] as double;
