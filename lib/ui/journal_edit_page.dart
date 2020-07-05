@@ -384,7 +384,7 @@ class JournalEditPageState extends State<JournalEditPage> {
           content: textEditingController.text,
           createdDate: tempJournal.createdDate,
           fontFamily: dropdownFontFamilyValue,
-          weatherCode: tempJournal.weatherCode ?? '01d',
+          weatherCode: weatherCode,
           location: tempJournal.location,
           longitude: tempJournal.longitude,
           latitude: tempJournal.latitude,
@@ -397,7 +397,7 @@ class JournalEditPageState extends State<JournalEditPage> {
             content: textEditingController.text,
             createdDate: DateTime.now(),
             fontFamily: dropdownFontFamilyValue,
-            weatherCode: weatherCode ?? '01d',
+            weatherCode: weatherCode,
             location: location,
             longitude: longitude,
             latitude: latitude,
@@ -424,6 +424,7 @@ class JournalEditPageState extends State<JournalEditPage> {
           imageFile = temp;
           this.imageBytes = bytes;
           photoAttached = true;
+          weatherCode = tempJournal.weatherCode;
           textAlign = tempJournal.textAlign;
         });
       });
@@ -448,6 +449,7 @@ class JournalEditPageState extends State<JournalEditPage> {
   void onWeatherChanged(String code) {
     setState(() {
       weatherCode = code;
+      saveContent();
     });
   }
 
