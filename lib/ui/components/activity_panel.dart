@@ -26,14 +26,16 @@ class ActivityPanel extends StatelessWidget {
       future: compute(convertTimeStampsToDateTimeMap, journals),
       builder: (_, snapshot) {
         var map = snapshot.data;
+
         if (snapshot.hasData) {
           return Material(
               color: backgroundColor,
               child: InkWell(
                 child: Container(
-                  height: 120,
+                  height: (MediaQuery.of(context).size.width / 12) * 5,
                   color: Colors.transparent,
                   child: GridView.count(
+                      physics: NeverScrollableScrollPhysics(),
                       controller: scrollController,
                       padding: EdgeInsets.all(2),
                       childAspectRatio: 1,
@@ -41,8 +43,8 @@ class ActivityPanel extends StatelessWidget {
                       mainAxisSpacing: 2,
                       scrollDirection: Axis.horizontal,
                       crossAxisCount: 5,
-                      children: Iterable.generate(90, (index) {
-                        var d = DateTime.now().subtract(Duration(days: 89 - index));
+                      children: Iterable.generate(60, (index) {
+                        var d = DateTime.now().subtract(Duration(days: 59 - index));
                         var date = DateTime(d.year, d.month, d.day);
                         if (map.containsKey(date)) {
                           return Material(
@@ -75,7 +77,7 @@ class ActivityPanel extends StatelessWidget {
             color: backgroundColor,
             child: InkWell(
               child: Container(
-                height: 120,
+                height: (MediaQuery.of(context).size.width / 12) * 5,
                 color: Colors.transparent,
                 child: GridView.count(
                     controller: scrollController,
@@ -85,7 +87,7 @@ class ActivityPanel extends StatelessWidget {
                     mainAxisSpacing: 2,
                     scrollDirection: Axis.horizontal,
                     crossAxisCount: 5,
-                    children: Iterable.generate(90, (index) {
+                    children: Iterable.generate(60, (index) {
                       return Material(
                         elevation: 1,
                         color: Colors.transparent,

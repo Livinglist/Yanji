@@ -28,7 +28,7 @@ class OverviewPage extends StatelessWidget {
 
     //secondaryPageScrollController.addListener(onSecondaryPageScrolled);
 
-    Timer(Duration(seconds: 2), () {
+    Timer(Duration(milliseconds: 800), () {
       secondaryPageScrollController.animateTo(secondaryPageScrollController.position.maxScrollExtent,
           duration: Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
     });

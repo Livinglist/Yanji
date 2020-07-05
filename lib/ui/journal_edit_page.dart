@@ -116,183 +116,190 @@ class JournalEditPageState extends State<JournalEditPage> {
     fontColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black;
     subTextColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white54 : Colors.black54;
 
-    return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        child: Stack(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Transform.scale(
-                scale: 34,
-                child: FloatingActionButton(
-                  elevation: 0,
-                  child: Container(
-                    color: Colors.transparent,
+    return WillPopScope(
+      onWillPop: () async {
+        saveContent();
+        return true;
+      },
+      child: Scaffold(
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          child: Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Transform.scale(
+                  scale: 34,
+                  child: FloatingActionButton(
+                    elevation: 0,
+                    child: Container(
+                      color: Colors.transparent,
+                    ),
+                    onPressed: () {},
+                    backgroundColor: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.black : Colors.white,
                   ),
-                  onPressed: () {},
-                  backgroundColor: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.black : Colors.white,
                 ),
               ),
-            ),
-            Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.transparent,
-                child: Scaffold(
-                    backgroundColor: Colors.transparent,
-                    appBar: PreferredSize(
-                        child: AppBar(
-                          leading: IconButton(icon: Icon(Icons.chevron_left), onPressed: onBackPressed),
-                          iconTheme: IconThemeData(
-                            color: fontColor, //change your color here
-                          ),
-                          elevation: elevation,
-                          backgroundColor: appBarColor,
-                          flexibleSpace: Padding(
-                              padding: EdgeInsets.only(left: 24, right: 12, top: 96),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  AnimatedOpacity(
-                                    duration: Duration(milliseconds: 600),
-                                    opacity: locationOpacity,
-                                    child: Text('',
-                                        style: TextStyle(color: fontColor, fontSize: 14, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal)),
-                                  ),
-                                  Spacer(),
-                                  AnimatedOpacity(
-                                    duration: Duration(milliseconds: 600),
-                                    opacity: dateOpacity,
-                                    child: Text(DateTime.now().toDisplayString(),
-                                        style: TextStyle(color: fontColor, fontSize: 14, fontWeight: FontWeight.normal)),
-                                  ),
-                                ],
-                              )),
-                          actions: <Widget>[
-                            DropdownButton<String>(
-                              dropdownColor: dropdownColor,
-                              value: weatherCode,
-                              icon: Icon(
-                                Icons.arrow_downward,
-                                color: fontColor,
+              Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.transparent,
+                  child: Scaffold(
+                      backgroundColor: Colors.transparent,
+                      appBar: PreferredSize(
+                          child: AppBar(
+                            leading: IconButton(icon: Icon(Icons.chevron_left), onPressed: onBackPressed),
+                            iconTheme: IconThemeData(
+                              color: fontColor, //change your color here
+                            ),
+                            elevation: elevation,
+                            backgroundColor: appBarColor,
+                            flexibleSpace: Padding(
+                                padding: EdgeInsets.only(left: 24, right: 12, top: 96),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    AnimatedOpacity(
+                                      duration: Duration(milliseconds: 600),
+                                      opacity: locationOpacity,
+                                      child: Text('',
+                                          style:
+                                              TextStyle(color: fontColor, fontSize: 14, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal)),
+                                    ),
+                                    Spacer(),
+                                    AnimatedOpacity(
+                                      duration: Duration(milliseconds: 600),
+                                      opacity: dateOpacity,
+                                      child: Text(DateTime.now().toDisplayString(),
+                                          style: TextStyle(color: fontColor, fontSize: 14, fontWeight: FontWeight.normal)),
+                                    ),
+                                  ],
+                                )),
+                            actions: <Widget>[
+                              DropdownButton<String>(
+                                dropdownColor: dropdownColor,
+                                value: weatherCode,
+                                icon: Icon(
+                                  Icons.arrow_downward,
+                                  color: fontColor,
+                                ),
+                                iconSize: 18,
+                                underline: Divider(
+                                  color: fontColor,
+                                ),
+                                onChanged: onWeatherChanged,
+                                items: <String>[
+                                  '01d',
+                                  '01n',
+                                  '02d',
+                                  '02n',
+                                  '03d',
+                                  '03n',
+                                  '04d',
+                                  '04n',
+                                  '09d',
+                                  '09n',
+                                  '10d',
+                                  '10n',
+                                  '11d',
+                                  '11n',
+                                  '13d',
+                                  '13n',
+                                  '50d',
+                                  '50n'
+                                ].map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Image.asset(
+                                        'assets/weather_icons/$value.png',
+                                        scale: 0.5,
+                                      ));
+                                }).toList(),
                               ),
-                              iconSize: 18,
-                              underline: Divider(
-                                color: fontColor,
+                              SizedBox(
+                                width: 12,
                               ),
-                              onChanged: onWeatherChanged,
-                              items: <String>[
-                                '01d',
-                                '01n',
-                                '02d',
-                                '02n',
-                                '03d',
-                                '03n',
-                                '04d',
-                                '04n',
-                                '09d',
-                                '09n',
-                                '10d',
-                                '10n',
-                                '11d',
-                                '11n',
-                                '13d',
-                                '13n',
-                                '50d',
-                                '50n'
-                              ].map<DropdownMenuItem<String>>((String value) {
-                                return DropdownMenuItem<String>(
+                              DropdownButton<String>(
+                                dropdownColor: dropdownColor,
+                                value: dropdownFontFamilyValue,
+                                icon: Icon(
+                                  Icons.arrow_downward,
+                                  color: fontColor,
+                                ),
+                                iconSize: 18,
+                                underline: Divider(
+                                  color: fontColor,
+                                ),
+                                onChanged: onFontChanged,
+                                items: fontNames.keys.toList().map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
                                     value: value,
-                                    child: Image.asset(
-                                      'assets/weather_icons/$value.png',
-                                      scale: 0.5,
-                                    ));
-                              }).toList(),
-                            ),
-                            SizedBox(
-                              width: 12,
-                            ),
-                            DropdownButton<String>(
-                              dropdownColor: dropdownColor,
-                              value: dropdownFontFamilyValue,
-                              icon: Icon(
-                                Icons.arrow_downward,
-                                color: fontColor,
+                                    child: Text(
+                                      fontNames[value],
+                                      style: TextStyle(color: fontColor, fontFamily: value),
+                                    ),
+                                  );
+                                }).toList(),
                               ),
-                              iconSize: 18,
-                              underline: Divider(
-                                color: fontColor,
+                              SizedBox(
+                                width: 12,
                               ),
-                              onChanged: onFontChanged,
-                              items: fontNames.keys.toList().map<DropdownMenuItem<String>>((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(
-                                    fontNames[value],
-                                    style: TextStyle(color: fontColor, fontFamily: value),
+                              IconButton(icon: textAlignToIcon(), onPressed: onAlignPressed),
+                              IconButton(icon: Icon(Icons.add_a_photo), onPressed: onAddPhotoPressed),
+                              IconButton(
+                                  icon: Icon(Icons.access_time),
+                                  onPressed: () {
+                                    int pos = textEditingController.selection.start;
+                                    if (pos != -1) {
+                                      String chineseTimeString = DateTime.now().toChineseTimeString();
+                                      textEditingController.text = textEditingController.text.replaceRange(pos, pos, chineseTimeString);
+                                    }
+                                  }),
+                              //IconButton(icon: Icon(Icons.done), onPressed: onDonePressed),
+                            ],
+                          ),
+                          preferredSize: Size.fromHeight(100)),
+                      body: SingleChildScrollView(
+                        controller: scrollController,
+                        child: Column(
+                          children: <Widget>[
+                            if (photoAttached)
+                              GestureDetector(
+                                onLongPress: onPhotoLongPressed,
+                                child: Container(
+                                  height: 200,
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.all(Radius.circular(12)), child: Image.memory(this.imageBytes, fit: BoxFit.cover)),
+                                ),
+                              ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 24, right: 24, bottom: 0, top: photoAttached ? 12 : 0),
+                              child: TextField(
+                                controller: textEditingController,
+                                minLines: 40,
+                                maxLines: 50,
+                                textAlign: textAlign,
+                                cursorColor: fontColor,
+                                decoration: InputDecoration(
+                                  focusColor: Colors.transparent,
+                                  fillColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide.none,
                                   ),
-                                );
-                              }).toList(),
-                            ),
-                            SizedBox(
-                              width: 12,
-                            ),
-                            IconButton(icon: textAlignToIcon(), onPressed: onAlignPressed),
-                            IconButton(icon: Icon(Icons.add_a_photo), onPressed: onAddPhotoPressed),
-                            IconButton(
-                                icon: Icon(Icons.access_time),
-                                onPressed: () {
-                                  int pos = textEditingController.selection.start;
-                                  if (pos != -1) {
-                                    String chineseTimeString = DateTime.now().toChineseTimeString();
-                                    textEditingController.text = textEditingController.text.replaceRange(pos, pos, chineseTimeString);
-                                  }
-                                }),
-                            //IconButton(icon: Icon(Icons.done), onPressed: onDonePressed),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                                style: TextStyle(
+                                    fontSize: dropdownFontFamilyValue == noto ? 18 : 24, fontFamily: dropdownFontFamilyValue, color: fontColor),
+                              ),
+                            )
                           ],
                         ),
-                        preferredSize: Size.fromHeight(100)),
-                    body: SingleChildScrollView(
-                      controller: scrollController,
-                      child: Column(
-                        children: <Widget>[
-                          if (photoAttached)
-                            GestureDetector(
-                              onLongPress: onPhotoLongPressed,
-                              child: Container(
-                                height: 200,
-                                child: ClipRRect(
-                                    borderRadius: BorderRadius.all(Radius.circular(12)), child: Image.memory(this.imageBytes, fit: BoxFit.cover)),
-                              ),
-                            ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 24, right: 24, bottom: 0, top: photoAttached ? 12 : 0),
-                            child: TextField(
-                              controller: textEditingController,
-                              minLines: 40,
-                              maxLines: 50,
-                              textAlign: textAlign,
-                              cursorColor: fontColor,
-                              decoration: InputDecoration(
-                                focusColor: Colors.transparent,
-                                fillColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                ),
-                              ),
-                              style: TextStyle(
-                                  fontSize: dropdownFontFamilyValue == noto ? 18 : 24, fontFamily: dropdownFontFamilyValue, color: fontColor),
-                            ),
-                          )
-                        ],
-                      ),
-                    ))),
-          ],
+                      ))),
+            ],
+          ),
         ),
       ),
     );
