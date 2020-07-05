@@ -31,7 +31,28 @@ extension DatetimeStringify on DateTime {
       case '9':
         return '九';
       case '0':
-        return '〇';
+        return '零';
+      default:
+        throw Exception("Unmatched month");
+    }
+  }
+
+  String _numToChineseWeekDay(int num) {
+    switch (num) {
+      case 1:
+        return '一';
+      case 2:
+        return '二';
+      case 3:
+        return '三';
+      case 4:
+        return '四';
+      case 5:
+        return '五';
+      case 6:
+        return '六';
+      case 7:
+        return '天';
       default:
         throw Exception("Unmatched month");
     }
@@ -68,17 +89,21 @@ extension DatetimeStringify on DateTime {
     }
   }
 
-  String _dayToChineseString(int num) {
+  String _numToChinese(int num) {
     String str = '';
 
-    if (num > 30) {
-      str = '三十' + _numToChineseString(num.toString()[1]);
-    }
-    if (num > 20) {
-      str = '二十' + _numToChineseString(num.toString()[1]);
-    }
-    if (num > 30) {
-      str = '十' + _numToChineseString(num.toString()[1]);
+    if (num >= 60) {
+      str = '六十' + (num % 10 == 0 ? '' : _numToChineseString(num.toString()[1]));
+    } else if (num >= 50) {
+      str = '五十' + (num % 10 == 0 ? '' : _numToChineseString(num.toString()[1]));
+    } else if (num >= 40) {
+      str = '四十' + (num % 10 == 0 ? '' : _numToChineseString(num.toString()[1]));
+    } else if (num >= 30) {
+      str = '三十' + (num % 10 == 0 ? '' : _numToChineseString(num.toString()[1]));
+    } else if (num >= 20) {
+      str = '二十' + (num % 10 == 0 ? '' : _numToChineseString(num.toString()[1]));
+    } else if (num >= 10) {
+      str = '十' + (num % 10 == 0 ? '' : _numToChineseString(num.toString()[1]));
     } else {
       str = _numToChineseString(num.toString()[0]);
     }
@@ -118,7 +143,33 @@ extension DatetimeStringify on DateTime {
   }
 
   String toDisplayString() {
-    return "${this.yearString} ${this.monthString} ${_dayToChineseString(this.day)}日";
+    return "${this.yearString} ${this.monthString} ${_numToChinese(this.day)}日 周${_numToChineseWeekDay(this.weekday)}";
+  }
+
+  String toChineseTimeString() {
+    int hour = this.hour;
+    int minute = this.minute;
+    String prefix = '';
+
+    if (hour >= 12) {
+      hour = hour - 12;
+
+      if (hour <= 5) {
+        prefix = '下午';
+      } else if (hour <= 12) {
+        prefix = '傍晚';
+      }
+    } else {
+      if (hour < 6) {
+        prefix = '凌晨';
+      } else if (hour <= 11) {
+        prefix = '早晨';
+      } else if (hour <= 12) {
+        prefix = '中午';
+      }
+    }
+
+    return "$prefix${_numToChinese(hour)}時${minute < 10 ? '零' : ''}${_numToChinese(minute)}分";
   }
 
   bool isTheSameDay(DateTime dateTime) {

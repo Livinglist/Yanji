@@ -12,7 +12,7 @@ import 'package:jiba/models/journal.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-TextStyle smallTextStyle = TextStyle(color: Colors.black, fontSize: 14, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal);
+TextStyle smallTextStyle = TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.normal);
 
 class JournalEditPage extends StatefulWidget {
   ///Weather or not there was a early version of today's journal.
@@ -48,6 +48,8 @@ class JournalEditPageState extends State<JournalEditPage> {
   String location, weatherCode = '01d';
 
   String dropdownFontFamilyValue = noto;
+
+  TextAlign textAlign = TextAlign.left;
 
   File imageFile;
 
@@ -163,7 +165,7 @@ class JournalEditPageState extends State<JournalEditPage> {
                                     duration: Duration(milliseconds: 600),
                                     opacity: dateOpacity,
                                     child: Text(DateTime.now().toDisplayString(),
-                                        style: TextStyle(color: fontColor, fontSize: 14, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal)),
+                                        style: TextStyle(color: fontColor, fontSize: 14, fontWeight: FontWeight.normal)),
                                   ),
                                 ],
                               )),
@@ -236,7 +238,17 @@ class JournalEditPageState extends State<JournalEditPage> {
                             SizedBox(
                               width: 12,
                             ),
+                            IconButton(icon: textAlignToIcon(), onPressed: onAlignPressed),
                             IconButton(icon: Icon(Icons.add_a_photo), onPressed: onAddPhotoPressed),
+                            IconButton(
+                                icon: Icon(Icons.access_time),
+                                onPressed: () {
+                                  int pos = textEditingController.selection.start;
+                                  if (pos != -1) {
+                                    String chineseTimeString = DateTime.now().toChineseTimeString();
+                                    textEditingController.text = textEditingController.text.replaceRange(pos, pos, chineseTimeString);
+                                  }
+                                }),
                             //IconButton(icon: Icon(Icons.done), onPressed: onDonePressed),
                           ],
                         ),
@@ -260,6 +272,7 @@ class JournalEditPageState extends State<JournalEditPage> {
                               controller: textEditingController,
                               minLines: 40,
                               maxLines: 50,
+                              textAlign: textAlign,
                               cursorColor: fontColor,
                               decoration: InputDecoration(
                                 focusColor: Colors.transparent,
@@ -272,7 +285,8 @@ class JournalEditPageState extends State<JournalEditPage> {
                                   borderSide: BorderSide.none,
                                 ),
                               ),
-                              style: TextStyle(fontSize: 24, fontFamily: dropdownFontFamilyValue, color: fontColor),
+                              style: TextStyle(
+                                  fontSize: dropdownFontFamilyValue == noto ? 18 : 24, fontFamily: dropdownFontFamilyValue, color: fontColor),
                             ),
                           )
                         ],
@@ -367,7 +381,8 @@ class JournalEditPageState extends State<JournalEditPage> {
           location: tempJournal.location,
           longitude: tempJournal.longitude,
           latitude: tempJournal.latitude,
-          imageBytes: imageBytes));
+          imageBytes: imageBytes,
+          textAlign: textAlign));
     } else {
       if (!(imageBytes == null && textEditingController.text.isEmpty)) {
         journalBloc.addJournal(Journal(
@@ -379,7 +394,8 @@ class JournalEditPageState extends State<JournalEditPage> {
             location: location,
             longitude: longitude,
             latitude: latitude,
-            imageBytes: imageBytes));
+            imageBytes: imageBytes,
+            textAlign: textAlign));
       }
     }
   }
@@ -401,6 +417,7 @@ class JournalEditPageState extends State<JournalEditPage> {
           imageFile = temp;
           this.imageBytes = bytes;
           photoAttached = true;
+          textAlign = tempJournal.textAlign;
         });
       });
     } else {
@@ -411,6 +428,7 @@ class JournalEditPageState extends State<JournalEditPage> {
         location = tempJournal.location;
         weatherCode = tempJournal.weatherCode;
         locationOpacity = 1;
+        textAlign = tempJournal.textAlign;
       });
     }
   }
@@ -449,13 +467,13 @@ class JournalEditPageState extends State<JournalEditPage> {
                       this.imageBytes = null;
                     });
                   },
-                  child: Text('删除'))
+                  child: Text('删除', style: TextStyle(fontFamily: noto)))
             ],
             cancelButton: CupertinoActionSheetAction(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('取消')),
+                child: Text('取消', style: TextStyle(fontFamily: noto))),
           );
         });
   }
@@ -463,5 +481,37 @@ class JournalEditPageState extends State<JournalEditPage> {
   void onBackPressed() {
     Navigator.pop(context);
     saveContent();
+  }
+
+  void onAlignPressed() {
+    setState(() {
+      switch (textAlign) {
+        case TextAlign.left:
+          textAlign = TextAlign.center;
+
+          break;
+        case TextAlign.center:
+          textAlign = TextAlign.right;
+          break;
+        case TextAlign.right:
+          textAlign = TextAlign.left;
+          break;
+        default:
+          throw Exception("Unmatched textAlign");
+      }
+    });
+  }
+
+  Icon textAlignToIcon() {
+    switch (textAlign) {
+      case TextAlign.left:
+        return Icon(Icons.format_align_left);
+      case TextAlign.center:
+        return Icon(Icons.format_align_center);
+      case TextAlign.right:
+        return Icon(Icons.format_align_right);
+      default:
+        return Icon(Icons.format_align_left);
+    }
   }
 }

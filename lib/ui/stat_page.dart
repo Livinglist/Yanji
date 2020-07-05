@@ -24,6 +24,13 @@ class _StatPageState extends State<StatPage> {
           stream: journalBloc.allJournals,
           builder: (_, AsyncSnapshot<List<Journal>> snapshot) {
             if (snapshot.hasData) {
+              DateTime now = DateTime.now();
+
+              var todayInHistory = snapshot.data.reversed.where((e) {
+                var created = e.createdDate;
+                return created.day == now.day && created.isTheSameDay(now) == false;
+              }).toList();
+
               return SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
@@ -50,7 +57,7 @@ class _StatPageState extends State<StatPage> {
                     SectionHeader(
                       headerText: "过往今日",
                     ),
-                    if (snapshot.data.isEmpty)
+                    if (todayInHistory.isEmpty)
                       Container(
                         height: 220,
                         width: double.infinity,
@@ -61,7 +68,7 @@ class _StatPageState extends State<StatPage> {
                           ),
                         ),
                       ),
-                    ...buildChildren(snapshot.data)
+                    ...buildChildren(todayInHistory)
                   ],
                 ),
               );
@@ -72,6 +79,6 @@ class _StatPageState extends State<StatPage> {
   }
 
   List<Widget> buildChildren(List<Journal> journals) {
-    return journals.reversed.map((e) => JournalOverviewCard(journal: e, lengthRestricted: true)).toList();
+    return journals.map((e) => JournalOverviewCard(journal: e, lengthRestricted: true)).toList();
   }
 }

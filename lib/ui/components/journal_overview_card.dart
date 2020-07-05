@@ -77,7 +77,8 @@ class _JournalOverviewCardState extends State<JournalOverviewCard> with SingleTi
                 child: Text(
                   widget.journal.content ?? '',
                   maxLines: maxLines,
-                  style: TextStyle(fontSize: 18, fontFamily: widget.journal.fontFamily, fontWeight: FontWeight.normal),
+                  style: TextStyle(
+                      fontSize: widget.journal.fontFamily == noto ? 18 : 24, fontFamily: widget.journal.fontFamily, fontWeight: FontWeight.normal),textAlign: widget.journal.textAlign,
                 ),
               ),
               SizedBox(
@@ -106,7 +107,7 @@ class _JournalOverviewCardState extends State<JournalOverviewCard> with SingleTi
                         alignment: Alignment.bottomRight,
                         child: Text(
                           widget.journal.createdDate.toDisplayString() ?? '11.03.1998',
-                          style: TextStyle(color: Colors.black54, fontSize: 14, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal),
+                          style: TextStyle(color: Colors.black54, fontSize: 14, fontWeight: FontWeight.normal),
                         ),
                       ),
                     )
@@ -216,7 +217,7 @@ class _JournalOverviewCardState extends State<JournalOverviewCard> with SingleTi
                   child: Text(
                     widget.journal.content,
                     maxLines: 4,
-                    style: TextStyle(fontSize: 24, fontFamily: widget.journal.fontFamily, fontWeight: FontWeight.normal),
+                    style: TextStyle(fontSize: widget.journal.fontFamily == noto ? 18 : 24, fontFamily: widget.journal.fontFamily, fontWeight: FontWeight.normal),textAlign: widget.journal.textAlign,
                   ),
                 ),
               ),

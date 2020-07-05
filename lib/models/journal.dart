@@ -2,6 +2,7 @@ import 'dart:ffi';
 import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter/material.dart' show TextAlign;
 
 import 'package:jiba/ui/components/journal_overview_card.dart';
 import 'package:jiba/helpers/datetime_helpers.dart';
@@ -14,13 +15,7 @@ const String liu = 'liu';
 const String zhi = 'zhi';
 const String long = 'long';
 
-const Map<String, String> fontNames = {
-  'noto':'笔记',
-  'ma':'飘逸',
-  'liu':'放纵',
-  'zhi':'随性',
-  'long':'得体'
-};
+const Map<String, String> fontNames = {'noto': '笔记', 'ma': '飘逸', 'liu': '放纵', 'zhi': '随性', 'long': '得体'};
 
 class Journal extends Comparable<Journal> {
   ///The id of the journal.
@@ -50,6 +45,8 @@ class Journal extends Comparable<Journal> {
   double longitude;
   double latitude;
 
+  TextAlign textAlign;
+
   ///Whether or not the journal has an image attached.
   bool get hasImage => this.imageBytes == null ? false : true;
 
@@ -68,7 +65,8 @@ class Journal extends Comparable<Journal> {
       this.weatherCode,
       this.longitude,
       this.latitude,
-      this.location})
+      this.location,
+      this.textAlign = TextAlign.left})
       : assert(content != null || imageBytes != null) {
     if (createdDate == null) {
       _createdDate = DateTime.now().toUtc();
@@ -93,7 +91,8 @@ class Journal extends Comparable<Journal> {
         'WeatherCode': this.weatherCode,
         'FontFamily': this.fontFamily,
         'ImageBytes': this.imageBytes,
-        'IsBookmarked':this.isBookmarked?1:0
+        'IsBookmarked': this.isBookmarked ? 1 : 0,
+        'textAlign': this.textAlign.index
       };
 
   Journal.fromMap(Map map) {
@@ -107,6 +106,7 @@ class Journal extends Comparable<Journal> {
     this.fontFamily = map['FontFamily'];
     this.imageBytes = map['ImageBytes'];
     this.isBookmarked = (map['IsBookmarked'] as int) == 1 ? true : false;
+    this.textAlign = (map['TextAlign'] as int) == null ? TextAlign.left : TextAlign.values.elementAt(map['TextAlign'] as int);
   }
 
   @override

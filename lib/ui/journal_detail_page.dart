@@ -85,7 +85,7 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
                       ),
                       Text(
                         widget.journal.createdDate.toDisplayString(),
-                        style: TextStyle(color: subTextColor, fontSize: 14, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal),
+                        style: TextStyle(color: subTextColor, fontSize: 14, fontWeight: FontWeight.normal),
                       ),
                     ],
                   ),
@@ -125,7 +125,11 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
                       width: MediaQuery.of(context).size.width,
                       child: Text(
                         widget.journal.content ?? '',
-                        style: TextStyle(fontSize: 24, color: fontColor, fontFamily: widget.journal.fontFamily, fontWeight: FontWeight.normal),
+                        style: TextStyle(
+                            fontSize: widget.journal.fontFamily == noto ? 18 : 24,
+                            color: fontColor,
+                            fontFamily: widget.journal.fontFamily,
+                            fontWeight: FontWeight.normal),textAlign: widget.journal.textAlign,
                       ),
                     ))
               ],
@@ -147,14 +151,14 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
         builder: (_) => CupertinoAlertDialog(
               title: Text(
                 '删除',
-                style: TextStyle(fontFamily: 'noto', fontWeight: FontWeight.bold),
+                style: TextStyle(fontFamily: noto, fontWeight: FontWeight.bold),
               ),
               content: Text('确定吗?'),
               actions: <Widget>[
                 CupertinoDialogAction(
                   child: Text(
                     '是',
-                    style: TextStyle(color: Colors.red, fontFamily: 'noto'),
+                    style: TextStyle(color: Colors.red, fontFamily: noto),
                   ),
                   onPressed: () {
                     journalBloc.removeJournal(widget.journal);
@@ -165,7 +169,7 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
                 CupertinoDialogAction(
                     child: Text(
                       '否',
-                      style: TextStyle(fontFamily: 'noto', fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: noto, fontWeight: FontWeight.bold),
                     ),
                     onPressed: () {
                       Navigator.pop(context);
