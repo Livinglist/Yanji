@@ -27,7 +27,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>This app needs access to calendars.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>需要相册权限.</string>
+	<string>需要相册权限以附着相片.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>This app needs access to contacts.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -39,7 +39,7 @@
 	<key>NSMotionUsageDescription</key>
 	<string>This app needs access to motion.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>需要相册权限.</string>
+	<string>需要相册权限以附着相片.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>This app needs access to speech.</string>
 	<key>UILaunchStoryboardName</key>
