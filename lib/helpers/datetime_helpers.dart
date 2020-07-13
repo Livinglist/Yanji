@@ -184,8 +184,8 @@ extension DatetimeStringify on DateTime {
     if (this.year == dateTime.year && this.difference(dateTime).inDays.abs() <= 6) {
       if (this.weekday == dateTime.weekday) return true;
       var weekDay = this.weekday;
-      var upper = this.add(Duration(days: 7 - weekDay));
-      var lower = this.subtract(Duration(days: weekDay));
+      var upper = this.add(Duration(days: 8 - weekDay));
+      var lower = this.subtract(Duration(days: weekDay + 1));
 
       if (dateTime.isAfter(lower) && dateTime.isBefore(upper)) {
         return true;
