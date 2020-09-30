@@ -29,7 +29,7 @@ class MonthOverviewCard extends StatelessWidget {
 
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: (MediaQuery.of(context).size.width / 7) * 74 * (this.year == DateTime.now().year ? DateTime.now().month / 12 : 1),
+      height: (MediaQuery.of(context).size.width / 7) * 80 * (this.year == DateTime.now().year ? DateTime.now().month / 12 : 1),
       decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(12))),
       child: GridView.count(
         physics: NeverScrollableScrollPhysics(),
@@ -80,7 +80,6 @@ class MonthOverviewCard extends StatelessWidget {
     ///0,1,2,3,4,5,6
     while (date.isBefore(DateTime.now())) {
       date = date.add(Duration(days: 1));
-      print(date);
 
       tempJournal = _findJournal(date.month, date.day);
 
@@ -203,6 +202,7 @@ class MonthOverviewCard extends StatelessWidget {
     return journalCircle;
   }
 
+  @Deprecated("")
   List<Widget> _buildMonthRow(BuildContext context) {
     List<Widget> widgets = List<Widget>();
 
@@ -211,6 +211,7 @@ class MonthOverviewCard extends StatelessWidget {
     return widgets;
   }
 
+  @Deprecated("")
   List<Widget> _buildDayRows(BuildContext context) {
     List<Widget> widgets = List<Widget>();
 

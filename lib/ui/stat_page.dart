@@ -7,7 +7,6 @@ import 'package:jiba/ui/components/journal_overview_card.dart';
 import 'package:jiba/ui/year_page.dart';
 import 'components/section_header.dart';
 import 'bookmarks_page.dart';
-import 'package:jiba/helpers/list_helpers.dart';
 
 ///This is the page that displays bookmarked journals and today in history.
 class StatPage extends StatefulWidget {

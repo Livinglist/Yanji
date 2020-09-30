@@ -3,8 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:jiba/bloc/journal_bloc.dart';
-import 'components/journal_overview_card.dart';
-import 'package:jiba/helpers/datetime_helpers.dart';
 import 'year_detail_page.dart';
 
 class YearPage extends StatefulWidget {

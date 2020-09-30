@@ -5,8 +5,6 @@ import 'package:jiba/models/journal.dart';
 
 export 'package:jiba/models/journal.dart';
 
-import 'dart:math';
-
 class JournalBloc {
   BehaviorSubject<List<Journal>> _journalFetcher = BehaviorSubject<List<Journal>>();
   BehaviorSubject<Journal> _incompleteJournalFetcher = BehaviorSubject<Journal>();

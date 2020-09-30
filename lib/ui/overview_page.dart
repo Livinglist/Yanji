@@ -30,7 +30,7 @@ class OverviewPage extends StatelessWidget {
 
     Timer(Duration(milliseconds: 800), () {
       secondaryPageScrollController.animateTo(secondaryPageScrollController.position.maxScrollExtent,
-          duration: Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
+          duration: Duration(seconds: 1), curve: Curves.linear);
     });
 
     Color backgroundColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.black : Colors.white;
@@ -78,6 +78,7 @@ class OverviewPage extends StatelessWidget {
                     print(futureSnapshot.data);
                     return ListView(
                       controller: secondaryPageScrollController,
+                      physics: ClampingScrollPhysics(),
                       children: <Widget>[
                         ...buildChildren(futureSnapshot.data, context),
                         SizedBox(

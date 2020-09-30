@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:jiba/bloc/journal_bloc.dart';
-import 'package:jiba/helpers/network_helpers.dart';
 import 'package:jiba/models/journal.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:transparent_image/transparent_image.dart';

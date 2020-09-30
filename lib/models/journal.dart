@@ -1,7 +1,3 @@
-import 'dart:ffi';
-import 'dart:io';
-
-import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart' show TextAlign;
 
 import 'package:jiba/ui/components/journal_overview_card.dart';
