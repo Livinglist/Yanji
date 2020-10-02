@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -47,16 +48,20 @@ class ActivityPanel extends StatelessWidget {
                         var d = DateTime.now().subtract(Duration(days: 59 - index));
                         var date = DateTime(d.year, d.month, d.day);
                         if (map.containsKey(date)) {
-                          return Material(
-                              elevation: 2,
-                              child: InkWell(
-                                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => JournalDetailPage(journal: map[date]))),
-                                child: Container(
-                                  height: width - 2,
-                                  width: width - 2,
-                                  color: foregroundColor,
-                                ),
-                              ));
+                          return OpenContainer(
+                            closedBuilder: (_, __) {
+                              return Material(
+                                  elevation: 2,
+                                  child: Container(
+                                    height: width - 2,
+                                    width: width - 2,
+                                    color: foregroundColor,
+                                  ),);
+                            },
+                            openBuilder: (_, __) {
+                              return JournalDetailPage(journal: map[date]);
+                            },
+                          );
                         } else {
                           return Material(
                             elevation: 1,

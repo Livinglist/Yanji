@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:jiba/ui/components/spring_curve.dart';
 import 'components/month_overview_card.dart';
 import 'package:jiba/models/journal.dart';
 import 'components/journal_overview_card.dart';
@@ -28,9 +29,13 @@ class OverviewPage extends StatelessWidget {
 
     //secondaryPageScrollController.addListener(onSecondaryPageScrolled);
 
+    //secondaryPageScrollController.position.maxScrollExtent
+
+    double cellHeight = MediaQuery.of(context).size.width / 7;
+    double scrollExtent = DateTime.now().month * 5 * cellHeight;
+
     Timer(Duration(milliseconds: 800), () {
-      secondaryPageScrollController.animateTo(secondaryPageScrollController.position.maxScrollExtent,
-          duration: Duration(seconds: 1), curve: Curves.linear);
+      secondaryPageScrollController.animateTo(scrollExtent, duration: Duration(milliseconds: 700), curve: SpringCurve.underDamped);
     });
 
     Color backgroundColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.black : Colors.white;
@@ -78,7 +83,7 @@ class OverviewPage extends StatelessWidget {
                     print(futureSnapshot.data);
                     return ListView(
                       controller: secondaryPageScrollController,
-                      physics: ClampingScrollPhysics(),
+                      physics: BouncingScrollPhysics(),
                       children: <Widget>[
                         ...buildChildren(futureSnapshot.data, context),
                         SizedBox(
