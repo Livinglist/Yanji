@@ -1,4 +1,4 @@
-# 记吧 ![57](https://user-images.githubusercontent.com/7277662/109369652-fef3b280-7851-11eb-92ea-422937e2fd40.png)
+# 记吧
 
 
 ![iOS](https://img.shields.io/badge/iOS-13%20-blue)
