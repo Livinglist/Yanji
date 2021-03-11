@@ -71,10 +71,10 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    Color backgroundColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.black : Colors.white;
+
     return Scaffold(
-        //backgroundColor: Color.fromRGBO(232, 216, 189, 1),
-        backgroundColor: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.black : Colors.white,
-        //floatingActionButton: fab,
+        backgroundColor: backgroundColor,
         body: StreamBuilder(
           stream: journalBloc.allJournals,
           builder: (_, AsyncSnapshot<List<Journal>> snapshot) {

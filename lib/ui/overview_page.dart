@@ -9,25 +9,35 @@ import 'package:jiba/resources/string_values.dart';
 import 'package:jiba/helpers/list_helpers.dart';
 import 'package:jiba/bloc/journal_bloc.dart';
 
-class OverviewPage extends StatelessWidget {
-  final String displayString;
-  final ScrollController secondaryPageScrollController = ScrollController(initialScrollOffset: 0);
+class OverviewPage extends StatefulWidget {
+  @override
+  _OverviewPageState createState() => _OverviewPageState();
+}
+
+class _OverviewPageState extends State<OverviewPage> {
+  final ScrollController scrollController = ScrollController(initialScrollOffset: 0);
+
+  String displayString;
   Color fontColor;
 
   ///The [elevation] value for the [AppBar] on [secondaryPage]
   double elevation = 0;
 
-  OverviewPage() : this.displayString = randomStrings.getRandom();
+  @override
+  void initState() {
+    displayString = randomStrings.getRandom();
+    super.initState();
+
+    Timer(Duration(milliseconds: 800), () {
+      if (scrollController.hasClients) {
+        scrollController.animateTo(scrollController.position.maxScrollExtent,
+            duration: Duration(milliseconds: 700), curve: SpringCurve.underDamped);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    double cellHeight = MediaQuery.of(context).size.width / 7;
-    double scrollExtent = DateTime.now().month * 5 * cellHeight;
-
-    Timer(Duration(milliseconds: 800), () {
-      secondaryPageScrollController.animateTo(scrollExtent, duration: Duration(milliseconds: 700), curve: SpringCurve.underDamped);
-    });
-
     Color backgroundColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.black : Colors.white;
     fontColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black;
 
@@ -72,7 +82,7 @@ class OverviewPage extends StatelessWidget {
                   if (futureSnapshot.hasData) {
                     print(futureSnapshot.data);
                     return ListView(
-                      controller: secondaryPageScrollController,
+                      controller: scrollController,
                       physics: BouncingScrollPhysics(),
                       children: <Widget>[
                         ...buildChildren(futureSnapshot.data, context),

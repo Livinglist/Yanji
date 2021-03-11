@@ -18,9 +18,11 @@ class _StatPageState extends State<StatPage> {
   @override
   Widget build(BuildContext context) {
     Color fontColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black;
+    Color foregroundColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black;
+    Color backgroundColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.black : Colors.white;
 
     return Scaffold(
-        backgroundColor: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.black : Colors.white,
+        backgroundColor: backgroundColor,
         body: StreamBuilder(
           stream: journalBloc.allJournals,
           builder: (_, AsyncSnapshot<List<Journal>> snapshot) {
@@ -41,13 +43,11 @@ class _StatPageState extends State<StatPage> {
                     ListTile(
                       leading: Icon(
                         Icons.collections_bookmark,
-                        color: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black,
+                        color: foregroundColor,
                       ),
                       title: Text(
                         '書籤',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black),
+                        style: TextStyle(fontWeight: FontWeight.bold, color: foregroundColor),
                       ),
                       trailing: Text(
                         snapshot.data.where((element) => element.isBookmarked).length.toString() + ' 篇',
@@ -58,13 +58,11 @@ class _StatPageState extends State<StatPage> {
                     ListTile(
                       leading: Icon(
                         Icons.list,
-                        color: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black,
+                        color: foregroundColor,
                       ),
                       title: Text(
                         '歷年',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black),
+                        style: TextStyle(fontWeight: FontWeight.bold, color: foregroundColor),
                       ),
                       trailing: Text(
                         snapshot.data.length.toString() + ' 篇',
