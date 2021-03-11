@@ -21,16 +21,6 @@ class OverviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-//    Future.delayed(Duration(milliseconds: 1000), () {
-//      if (DateTime.now().day >= 18) {
-//        secondaryPageScrollController.animateTo(220, duration: Duration(milliseconds: 300), curve: Curves.decelerate);
-//      }
-//    });
-
-    //secondaryPageScrollController.addListener(onSecondaryPageScrolled);
-
-    //secondaryPageScrollController.position.maxScrollExtent
-
     double cellHeight = MediaQuery.of(context).size.width / 7;
     double scrollExtent = DateTime.now().month * 5 * cellHeight;
 
@@ -115,7 +105,7 @@ class OverviewPage extends StatelessWidget {
 
     return Future.forEach<Journal>(allJournals, (journal) {
       if (map.containsKey(journal.createdDate.year) == false) {
-        map[journal.createdDate.year] = List<Journal>();
+        map[journal.createdDate.year] = <Journal>[];
       }
 
       map[journal.createdDate.year].add(journal);
@@ -123,7 +113,7 @@ class OverviewPage extends StatelessWidget {
   }
 
   List<Widget> buildChildren(Map<int, List<Journal>> allJournalsByYear, BuildContext context) {
-    List<Widget> children = List<Widget>();
+    List<Widget> children = <Widget>[];
 
     if (allJournalsByYear.isEmpty) {
       children.add(SizedBox(

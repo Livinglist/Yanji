@@ -114,8 +114,6 @@ class Journal extends Comparable<Journal> {
 
   @override
   int compareTo(Journal other) {
-    print(other.createdDate.toDisplayString());
-    print(this.createdDate.toDisplayString());
     if (other.createdDate.year == this.createdDate.year &&
         other.createdDate.month == this.createdDate.month &&
         other.createdDate.day == this.createdDate.day) {

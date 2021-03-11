@@ -79,9 +79,6 @@ class DBProvider {
   Future<void> addJournal(Journal journal) async {
     final db = await database;
 
-    var table = await db.rawQuery('SELECT MAX(Id)+1 as Id FROM Journals');
-    int id = table.first['Id'];
-    var map = journal.toMap();
     return await db.insert('Journals', journal.toMap());
 //    await db.rawInsert(
 //        'INSERT Into Routines (Id, RoutineName, MainPart, Parts, LastCompletedDate, CreatedDate, Count, RoutineHistory, Weekdays) VALUES (?,?,?,?,?,?,?,?,?)',

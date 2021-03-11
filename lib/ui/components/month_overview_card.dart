@@ -11,7 +11,6 @@ typedef void JournalPressedCallBack(Journal journal);
 enum JournalForm { photoOnly, contentOnly, mixed }
 
 class MonthOverviewCard extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final List<Journal> journals;
   final int year;
   final int maxLength;
@@ -40,9 +39,8 @@ class MonthOverviewCard extends StatelessWidget {
   }
 
   List<Widget> _buildChildren(BuildContext context) {
-    List<Widget> children = List<Widget>();
+    List<Widget> children = <Widget>[];
     var date = DateTime(year, 1, 1);
-    var thisYear = date.year;
 
     Widget journalCircle;
 
@@ -88,7 +86,6 @@ class MonthOverviewCard extends StatelessWidget {
         var yesterdaysWeekday = date.subtract(Duration(days: 1)).weekday;
         yesterdaysWeekday = yesterdaysWeekday == 7 ? 1 : yesterdaysWeekday + 1;
         var todayWeekday = date.weekday == 7 ? 1 : date.weekday + 1;
-        var diff = 7 - yesterdaysWeekday + todayWeekday - 1;
 
         for (var _ in Iterable.generate(7 - yesterdaysWeekday)) {
           children.add(Container());
