@@ -26,49 +26,49 @@ class JournalBloc {
     _allJournals.sort((a, b) => b.createdDate.compareTo(a.createdDate));
 
 
-   _allJournals.add(Journal(
-       fontFamily: noto,
-       content:
-       "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
-       createdDate: DateTime(2021, 1, 5),
-       id: 888));
-   _allJournals.add(Journal(
-       fontFamily: noto,
-       content:
-       "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
-       createdDate: DateTime(2020, 7, 6),
-       id: 878));
-
-   _allJournals.add(Journal(
-       fontFamily: noto,
-       content:
-           "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
-       createdDate: DateTime(2020, 7, 7),
-       id: 88));
-   _allJournals.add(Journal(
-       fontFamily: noto,
-       content:
-       "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
-       createdDate: DateTime(2020, 7, 8),
-       id: 89));
-   _allJournals.add(Journal(
-       fontFamily: noto,
-       content:
-       "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
-       createdDate: DateTime(2020, 7, 9),
-       id: 90));
-   _allJournals.add(Journal(
-       fontFamily: noto,
-       content:
-       "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
-       createdDate: DateTime(2020, 7, 10),
-       id: 91));
-   _allJournals.add(Journal(
-       fontFamily: noto,
-       content:
-       "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
-       createdDate: DateTime(2020, 7, 13, 22),
-       id: 92));
+   // _allJournals.add(Journal(
+   //     fontFamily: noto,
+   //     content:
+   //     "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
+   //     createdDate: DateTime(2021, 1, 5),
+   //     id: 888));
+   // _allJournals.add(Journal(
+   //     fontFamily: noto,
+   //     content:
+   //     "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
+   //     createdDate: DateTime(2020, 7, 6),
+   //     id: 878));
+   //
+   // _allJournals.add(Journal(
+   //     fontFamily: noto,
+   //     content:
+   //         "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
+   //     createdDate: DateTime(2020, 7, 7),
+   //     id: 88));
+   // _allJournals.add(Journal(
+   //     fontFamily: noto,
+   //     content:
+   //     "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
+   //     createdDate: DateTime(2020, 7, 8),
+   //     id: 89));
+   // _allJournals.add(Journal(
+   //     fontFamily: noto,
+   //     content:
+   //     "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
+   //     createdDate: DateTime(2020, 7, 9),
+   //     id: 90));
+   // _allJournals.add(Journal(
+   //     fontFamily: noto,
+   //     content:
+   //     "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
+   //     createdDate: DateTime(2020, 7, 10),
+   //     id: 91));
+   // _allJournals.add(Journal(
+   //     fontFamily: noto,
+   //     content:
+   //     "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
+   //     createdDate: DateTime(2020, 7, 13, 22),
+   //     id: 92));
 
 
 //    String str = "Ab am es angenommen da halboffene uberwunden. Flei habe soll oder das alt. Ehe umwolkt kapelle dir diesmal stiefel bosheit. "

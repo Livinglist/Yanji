@@ -31,7 +31,7 @@ class _OverviewPageState extends State<OverviewPage> {
     Timer(Duration(milliseconds: 800), () {
       if (scrollController.hasClients) {
         scrollController.animateTo(scrollController.position.maxScrollExtent,
-            duration: Duration(milliseconds: 700), curve: SpringCurve.underDamped);
+            duration: Duration(milliseconds: 700), curve: SpringCurve.overDamped);
       }
     });
   }
