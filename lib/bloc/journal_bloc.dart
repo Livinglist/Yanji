@@ -176,6 +176,7 @@ class JournalBloc {
 
     if (journal.createdDate.isTheSameDay(DateTime.now())) {
       _incompleteJournal = null;
+      _hasIncompleteJournal = false;
       _incompleteJournalFetcher.sink.add(_incompleteJournal);
     }
   }
