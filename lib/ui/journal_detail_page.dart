@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:app_review/app_review.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:jiba/bloc/journal_bloc.dart';
@@ -149,16 +148,16 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
   }
 
   void onDeletePressed() {
-    showCupertinoDialog(
+    showDialog(
         context: context,
-        builder: (_) => CupertinoAlertDialog(
+        builder: (_) => AlertDialog(
               title: Text(
                 '删除',
                 style: TextStyle(fontFamily: noto, fontWeight: FontWeight.bold),
               ),
               content: Text('确定吗?'),
               actions: <Widget>[
-                CupertinoDialogAction(
+                TextButton(
                   child: Text(
                     '是',
                     style: TextStyle(color: Colors.red, fontFamily: noto),
@@ -169,7 +168,7 @@ class JournalDetailPageState extends State<JournalDetailPage> with SingleTickerP
                     Navigator.pop(context);
                   },
                 ),
-                CupertinoDialogAction(
+                TextButton(
                     child: Text(
                       '否',
                       style: TextStyle(fontFamily: noto, fontWeight: FontWeight.bold),
