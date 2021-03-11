@@ -30,7 +30,7 @@ class _OverviewPageState extends State<OverviewPage> {
 
     Timer(Duration(milliseconds: 800), () {
       if (scrollController.hasClients) {
-        scrollController.animateTo(scrollController.position.maxScrollExtent*0.5,
+        scrollController.animateTo(scrollController.position.maxScrollExtent * 0.5,
             duration: Duration(milliseconds: 700), curve: SpringCurve.overDamped);
       }
     });
@@ -38,8 +38,12 @@ class _OverviewPageState extends State<OverviewPage> {
 
   @override
   Widget build(BuildContext context) {
-    Color backgroundColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.black : Colors.white;
-    fontColor = MediaQuery.of(context).platformBrightness == Brightness.dark ? Colors.white : Colors.black;
+    Color backgroundColor = MediaQuery
+        .of(context)
+        .platformBrightness == Brightness.dark ? Colors.black : Colors.white;
+    fontColor = MediaQuery
+        .of(context)
+        .platformBrightness == Brightness.dark ? Colors.white : Colors.black;
 
     return Scaffold(
         backgroundColor: backgroundColor,
@@ -49,14 +53,21 @@ class _OverviewPageState extends State<OverviewPage> {
           elevation: elevation,
           centerTitle: true,
           title: Container(
-            width: MediaQuery.of(context).size.width,
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
             height: 24,
             child: Flex(
               direction: Axis.horizontal,
               children: <Widget>[
                 ...['日', '壹', '贰', '叁', '肆', '伍', '陆']
-                    .map((e) => Container(
-                        width: MediaQuery.of(context).size.width / 7,
+                    .map((e) =>
+                    Container(
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width / 7,
                         child: Center(
                           child: Text(
                             e,
@@ -130,14 +141,18 @@ class _OverviewPageState extends State<OverviewPage> {
         height: 24,
         child: Center(
           child: Text(
-            "${DateTime.now().year}",
+            "${DateTime
+                .now()
+                .year}",
             style: TextStyle(color: fontColor, fontSize: 18),
           ),
         ),
       ));
       children.add(MonthOverviewCard(
         journals: <Journal>[],
-        year: DateTime.now().year,
+        year: DateTime
+            .now()
+            .year,
         onJournalPressed: (Journal journal) {
           if (journal != null) {
             showModalBottomSheet(
@@ -154,7 +169,15 @@ class _OverviewPageState extends State<OverviewPage> {
       ));
     }
 
-    for (int year in allJournalsByYear.keys.toList()..sort((a, b) => a.compareTo(b))) {
+    var yearNow = DateTime.now().year;
+    var years = allJournalsByYear.keys.toList()
+      ..sort((a, b) => a.compareTo(b));
+
+    var firstYear = years.isEmpty ? yearNow : years.first;
+    years = List.generate(yearNow - firstYear + 1, (index) => firstYear + index);
+
+    for (int year in years) {
+      print("The year is ${year}");
       children.add(SizedBox(
         height: 24,
         child: Center(
@@ -165,7 +188,7 @@ class _OverviewPageState extends State<OverviewPage> {
         ),
       ));
       children.add(MonthOverviewCard(
-        journals: allJournalsByYear[year],
+        journals: allJournalsByYear[year] ?? [],
         year: year,
         onJournalPressed: (Journal journal) {
           if (journal != null) {
@@ -176,7 +199,10 @@ class _OverviewPageState extends State<OverviewPage> {
                     padding: EdgeInsets.only(bottom: 24),
                     child: Container(
                       color: Colors.transparent,
-                      width: MediaQuery.of(context).size.width,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
                       child: JournalOverviewCard(journal: journal, lengthRestricted: false),
                     ),
                   );
