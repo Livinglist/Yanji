@@ -177,7 +177,6 @@ class _OverviewPageState extends State<OverviewPage> {
     years = List.generate(yearNow - firstYear + 1, (index) => firstYear + index);
 
     for (int year in years) {
-      print("The year is ${year}");
       children.add(SizedBox(
         height: 24,
         child: Center(

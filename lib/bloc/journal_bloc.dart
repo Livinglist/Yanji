@@ -29,22 +29,28 @@ class JournalBloc {
    // _allJournals.add(Journal(
    //     fontFamily: noto,
    //     content:
-   //     "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
-   //     createdDate: DateTime(2021, 1, 5),
+   //     "欢迎来到言己。",
+   //     createdDate: DateTime(2021, 3, 12),
    //     id: 888));
    // _allJournals.add(Journal(
    //     fontFamily: noto,
    //     content:
-   //     "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
-   //     createdDate: DateTime(2020, 7, 6),
+   //     "三月春暖花开，东部一大波大学开始放春假，我的也不例外，最近开始寻找理想的度假目的地。",
+   //     createdDate: DateTime(2021, 2, 12),
    //     id: 878));
-   //
+   // //
    // _allJournals.add(Journal(
    //     fontFamily: noto,
    //     content:
-   //         "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. No et eiko puhe ryit ja asia he. Saa jolloin jaa ajaakos tuloaan torjuen karille. Tiesi eri kysyy laski onhan etten mikas luo. Oikeata nokkaan rahaksi ota kas. ",
-   //     createdDate: DateTime(2020, 7, 7),
-   //     id: 88));
+   //         "他们所有的设备和仪器仿佛都像是有生命的。",
+   //     createdDate: DateTime(2020, 12, 7),
+   //      id: 88));
+   //  _allJournals.add(Journal(
+   //      fontFamily: noto,
+   //      content:
+   //      "Naita toden pikku mihin kas hassu tee. En oikeata minahan te vaikkei rapylat menesty. Ai tuommoinen menettelet ryypattiin sinullekin lainattiin jo en kahvipannu. ",
+   //      createdDate: DateTime(2020, 12, 4),
+   //      id: 88));
    // _allJournals.add(Journal(
    //     fontFamily: noto,
    //     content:

@@ -52,7 +52,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
         if (val) {
           var tempJournal = Journal(
               id: 1,
-              content: '欢迎来到记吧，这是你的第一篇日记。',
+              content: '欢迎来到言己，这是你的第一篇日记。',
               createdDate: DateTime.now(),
               fontFamily: noto,
               isBookmarked: false,
