@@ -47,15 +47,6 @@ class _JournalOverviewCardState extends State<JournalOverviewCard> with SingleTi
     //if (widget.journal.hasImage) initialize();
   }
 
-//  void initialize() async {
-//    imageBytes = await getPic().whenComplete(() {
-//      setState(() {
-//        imageOpacity = 1;
-//        initialized = true;
-//      });
-//    });
-//  }
-
   @override
   void dispose() {
     controller.dispose();
@@ -78,7 +69,10 @@ class _JournalOverviewCardState extends State<JournalOverviewCard> with SingleTi
                   widget.journal.content ?? '',
                   maxLines: maxLines,
                   style: TextStyle(
-                      fontSize: widget.journal.fontFamily == noto ? 18 : 24, fontFamily: widget.journal.fontFamily, fontWeight: FontWeight.normal),textAlign: widget.journal.textAlign,
+                      fontSize: widget.journal.fontFamily == noto ? 18 : 24,
+                      fontFamily: widget.journal.fontFamily,
+                      fontWeight: FontWeight.normal),
+                  textAlign: widget.journal.textAlign,
                 ),
               ),
               SizedBox(
@@ -217,7 +211,11 @@ class _JournalOverviewCardState extends State<JournalOverviewCard> with SingleTi
                   child: Text(
                     widget.journal.content,
                     maxLines: 4,
-                    style: TextStyle(fontSize: widget.journal.fontFamily == noto ? 18 : 24, fontFamily: widget.journal.fontFamily, fontWeight: FontWeight.normal),textAlign: widget.journal.textAlign,
+                    style: TextStyle(
+                        fontSize: widget.journal.fontFamily == noto ? 18 : 24,
+                        fontFamily: widget.journal.fontFamily,
+                        fontWeight: FontWeight.normal),
+                    textAlign: widget.journal.textAlign,
                   ),
                 ),
               ),

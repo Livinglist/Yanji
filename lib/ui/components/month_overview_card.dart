@@ -146,10 +146,9 @@ class MonthOverviewCard extends StatelessWidget {
         journalCircle = Transform.scale(
           scale: scale,
           child: Container(
-            child: Center(
-              child: GestureDetector(onTap: () => this.onJournalPressed(tempJournal), child: Text(tempJournal.createdDate.day.toString())),
-            ),
-            decoration: BoxDecoration(color: Colors.cyan, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
+            child: Center(child: Text(tempJournal.createdDate.day.toString())),
+            decoration:
+                BoxDecoration(color: Colors.cyan, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
           ),
         );
         break;
@@ -158,45 +157,43 @@ class MonthOverviewCard extends StatelessWidget {
           scale: scale,
           //scale: 0.7,
           child: Container(
-            child: Center(
-              child: GestureDetector(onTap: () => this.onJournalPressed(tempJournal), child: Text(tempJournal.createdDate.day.toString())),
-            ),
-            decoration: BoxDecoration(color: Colors.orange, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
+            child: Center(child: Text(tempJournal.createdDate.day.toString())),
+            decoration:
+                BoxDecoration(color: Colors.orange, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
           ),
         );
         break;
       case JournalForm.mixed:
-        journalCircle = GestureDetector(
-          onTap: () => this.onJournalPressed(tempJournal),
-          child: Stack(
-            children: <Widget>[
-              Transform.scale(
-                scale: scale,
-                //scale: 0.7,
-                child: Container(
-                  decoration: BoxDecoration(color: Colors.cyan, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
-                ),
+        journalCircle = Stack(
+          children: <Widget>[
+            Transform.scale(
+              scale: scale,
+              //scale: 0.7,
+              child: Container(
+                decoration:
+                    BoxDecoration(color: Colors.cyan, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
               ),
-              Transform.scale(
-                scale: _getScale(tempJournal) * 0.6,
-                //scale: 0.7,
-                child: Container(
-                  decoration: BoxDecoration(color: Colors.orange, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
-                ),
+            ),
+            Transform.scale(
+              scale: _getScale(tempJournal) * 0.6,
+              //scale: 0.7,
+              child: Container(
+                decoration:
+                    BoxDecoration(color: Colors.orange, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
               ),
-              Align(
-                alignment: Alignment.center,
-                child: Text(tempJournal.createdDate.day.toString()),
-              )
-            ],
-          ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Text(tempJournal.createdDate.day.toString()),
+            )
+          ],
         );
         break;
       default:
         Container();
     }
 
-    return journalCircle;
+    return GestureDetector(onTap: () => this.onJournalPressed(tempJournal), child: journalCircle);
   }
 
   @Deprecated("")
@@ -236,7 +233,8 @@ class MonthOverviewCard extends StatelessWidget {
                   scale: scale,
                   child: Container(
                     child: GestureDetector(onTap: () => this.onJournalPressed(tempJournal)),
-                    decoration: BoxDecoration(color: Colors.cyan, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
+                    decoration: BoxDecoration(
+                        color: Colors.cyan, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
                   ),
                 );
                 break;
@@ -246,8 +244,8 @@ class MonthOverviewCard extends StatelessWidget {
                   //scale: 0.7,
                   child: Container(
                     child: GestureDetector(onTap: () => this.onJournalPressed(tempJournal)),
-                    decoration:
-                        BoxDecoration(color: Colors.orange, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
+                    decoration: BoxDecoration(
+                        color: Colors.orange, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
                   ),
                 );
                 break;
@@ -260,16 +258,16 @@ class MonthOverviewCard extends StatelessWidget {
                         scale: scale,
                         //scale: 0.7,
                         child: Container(
-                          decoration:
-                              BoxDecoration(color: Colors.cyan, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
+                          decoration: BoxDecoration(
+                              color: Colors.cyan, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
                         ),
                       ),
                       Transform.scale(
                         scale: _getScale(tempJournal) * 0.6,
                         //scale: 0.7,
                         child: Container(
-                          decoration:
-                              BoxDecoration(color: Colors.orange, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
+                          decoration: BoxDecoration(
+                              color: Colors.orange, shape: BoxShape.circle, border: Border.all(color: Colors.transparent, width: 0.3)),
                         ),
                       ),
                     ],
