@@ -8,16 +8,14 @@
 [![GitHub](https://img.shields.io/github/stars/livinglist/Jiba?style=social)](https://img.shields.io/github/stars/livinglist/Jiba?style=social)
 
 <p align="center">
-  <img width="360" alt="Screen Shot 2020-04-19 at 6 04 58 PM" src="https://user-images.githubusercontent.com/7277662/109369453-32820d00-7851-11eb-8c82-3290c883bfb8.png">
-<img width="360" alt="Screen Shot 2020-04-20 at 8 01 24 PM" src="https://user-images.githubusercontent.com/7277662/109369454-331aa380-7851-11eb-82d3-3fe7964a55d8.png">
-<img width="360" alt="Screen Shot 2020-08-20 at 6 16 50 PM" src="https://user-images.githubusercontent.com/7277662/109369450-31e97680-7851-11eb-9839-659faa60f9ee.png">
-<img width="360" alt="Screen Shot 2020-04-19 at 5 59 00 PM" src="https://user-images.githubusercontent.com/7277662/109369452-32820d00-7851-11eb-9556-28b72ec615bf.png">
-<img width="360" alt="Screen Shot 2020-08-20 at 6 21 33 PM" src="https://user-images.githubusercontent.com/7277662/109369447-3150e000-7851-11eb-8901-7a7fb244b5e3.png">
-<img width="360" alt="Screen Shot 2020-08-20 at 6 21 48 PM" src="https://user-images.githubusercontent.com/7277662/109369448-31e97680-7851-11eb-80b3-15e45df6674d.png">
-<img width="360" alt="Screen Shot 2020-08-20 at 6 16 43 PM" src="https://user-images.githubusercontent.com/7277662/109369445-30b84980-7851-11eb-8637-99fa3714d8af.png">
-  <img width="360" alt="Screen Shot 2020-03-03 at 1 25 18 PM" src="https://user-images.githubusercontent.com/7277662/109369446-3150e000-7851-11eb-9571-7917ae5eef78.png">
-  <img width="360" alt="Screen Shot 2020-03-03 at 1 22 57 PM" src="https://user-images.githubusercontent.com/7277662/109369435-2d24c280-7851-11eb-8f71-4a85aaa42253.png"> 
-  <img width="360" alt="Screen Shot 2020-08-20 at 6 16 26 PM" src="https://user-images.githubusercontent.com/7277662/109369441-2f871c80-7851-11eb-87de-1105f5847871.png">
+  <img width="360" alt="Screen Shot 2020-04-19 at 6 04 58 PM" src="https://user-images.githubusercontent.com/7277662/110915027-055f4100-82cc-11eb-86f4-6c469f7fc161.png">
+<img width="360" alt="Screen Shot 2020-04-20 at 8 01 24 PM" src="https://user-images.githubusercontent.com/7277662/110915038-085a3180-82cc-11eb-816c-3b92e1cf492c.png">
+<img width="360" alt="Screen Shot 2020-08-20 at 6 16 50 PM" src="https://user-images.githubusercontent.com/7277662/110915060-0d1ee580-82cc-11eb-9a77-542ae355d855.png">
+<img width="360" alt="Screen Shot 2020-04-19 at 5 59 00 PM" src="https://user-images.githubusercontent.com/7277662/110915071-0ee8a900-82cc-11eb-93a3-d1c503a62085.png">
+<img width="360" alt="Screen Shot 2020-08-20 at 6 21 33 PM" src="https://user-images.githubusercontent.com/7277662/110915087-127c3000-82cc-11eb-9805-07a86e8d8331.png">
+<img width="360" alt="Screen Shot 2020-08-20 at 6 21 48 PM" src="https://user-images.githubusercontent.com/7277662/110915102-15772080-82cc-11eb-88a4-2c0cb1838508.png">
+<img width="360" alt="Screen Shot 2020-08-20 at 6 16 43 PM" src="https://user-images.githubusercontent.com/7277662/110915115-18721100-82cc-11eb-81d2-712de0a86bb4.png">
+  <img width="360" alt="Screen Shot 2020-03-03 at 1 25 18 PM" src="https://user-images.githubusercontent.com/7277662/110915127-1ad46b00-82cc-11eb-9e63-74bee0eae34e.png">
 </p>
 
 ## Getting Started
