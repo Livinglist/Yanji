@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:jiba/bloc/journal_bloc.dart';
 import 'package:jiba/ui/components/activity_panel.dart';
 import 'package:jiba/ui/components/journal_overview_card.dart';
+import 'package:jiba/ui/settings_page.dart';
 import 'package:jiba/ui/year_page.dart';
 import 'components/section_header.dart';
 import 'bookmarks_page.dart';
@@ -53,7 +54,7 @@ class _StatPageState extends State<StatPage> {
                         snapshot.data.where((element) => element.isBookmarked).length.toString() + ' 篇',
                         style: TextStyle(fontWeight: FontWeight.bold, color: fontColor),
                       ),
-                      onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (_) => BookmarksPage())),
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => BookmarksPage())),
                     ),
                     ListTile(
                       leading: Icon(
@@ -68,7 +69,18 @@ class _StatPageState extends State<StatPage> {
                         snapshot.data.length.toString() + ' 篇',
                         style: TextStyle(fontWeight: FontWeight.bold, color: fontColor),
                       ),
-                      onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (_) => YearPage(journals: snapshot.data))),
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => YearPage(journals: snapshot.data))),
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.settings,
+                        color: foregroundColor,
+                      ),
+                      title: Text(
+                        '設置',
+                        style: TextStyle(fontWeight: FontWeight.bold, color: foregroundColor),
+                      ),
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SettingsPage())),
                     ),
                     ActivityPanel(journals: snapshot.data),
                     SectionHeader(

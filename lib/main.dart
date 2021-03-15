@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jiba/ui/password_page.dart';
 
 import 'resources/shared_prefs_provider.dart';
 import 'ui/main_page.dart';
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: '记吧',
+      title: '言己',
       darkTheme: ThemeData(
           bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent),
           fontFamily: 'noto',
@@ -21,7 +22,13 @@ class MyApp extends StatelessWidget {
           bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent),
           fontFamily: 'noto',
           textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black), bodyText2: TextStyle(fontWeight: FontWeight.bold))),
-      home: MainPage(),
+      home: FutureBuilder(
+        future: SharedPreferencesProvider.getPassword(),
+        builder: (_, snapshot){
+          if(snapshot.data == null) return MainPage();
+          else return PasswordPage(password: snapshot.data);
+        },
+      ),
       color: Colors.white,
     );
   }

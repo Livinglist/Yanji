@@ -16,6 +16,8 @@ const _tempJournalKey = 'tempJournalKey';
 
 const _initialStartKey = 'initialStartKey';
 
+const _passwordKey = 'passwordKey';
+
 class SharedPreferencesProvider {
   SharedPreferences _sharedPreferences;
 
@@ -117,16 +119,27 @@ class SharedPreferencesProvider {
     _sharedPreferences.setString(_lastFontFamilyKey, fontFamily);
   }
 
-  Future<bool> getIsInitialStart() async {
-    var _sharedPreferences = await SharedPreferences.getInstance();
+  static Future<bool> getIsInitialStart() async {
+    var sharedPreferences = await SharedPreferences.getInstance();
 
-    var res = _sharedPreferences.getBool(_initialStartKey);
+    var res = sharedPreferences.getBool(_initialStartKey);
 
     if(res == null){
-      _sharedPreferences.setBool(_initialStartKey, false);
+      sharedPreferences.setBool(_initialStartKey, false);
     }
 
     return Future.value(res == null?true:false);
+  }
+
+  static Future<String> getPassword() async {
+    var sharedPreferences = await SharedPreferences.getInstance();
+
+    return sharedPreferences.getString(_passwordKey);
+  }
+
+  static void setPassword(String password) async {
+    var sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setString(_passwordKey, password);
   }
 }
 

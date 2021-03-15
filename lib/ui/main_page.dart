@@ -67,7 +67,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
     });
   }
 
-  Future<bool> checkIsFirstTimeUser() async => await sharedPrefsProvider.getIsInitialStart();
+  Future<bool> checkIsFirstTimeUser() async => await SharedPreferencesProvider.getIsInitialStart();
 
   @override
   Widget build(BuildContext context) {
@@ -129,16 +129,13 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
         ListView(
           controller: scrollController,
           children: [
-            SizedBox(
-              height: 24,
-            ),
             if (journals.isNotEmpty) ...buildChildren(journals),
             if (journals.isEmpty)
               Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 child: Center(
-                  child: Text('No journals found', style: TextStyle(color: Colors.grey)),
+                  child: Text('空', style: TextStyle(color: Colors.grey)),
                 ),
               ),
             SizedBox(
@@ -158,7 +155,6 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
   }
 
   List<Widget> buildChildren(List<Journal> journals) {
-    //var list = journals.map((e) => JournalOverviewCard(journal: e)).toList();
     DateTime now = DateTime.now();
     List<Journal> journalsInTheSameWeek = [];
 
