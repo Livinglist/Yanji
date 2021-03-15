@@ -16,6 +16,8 @@
 <img width="360" alt="Screen Shot 2020-08-20 at 6 21 48 PM" src="https://user-images.githubusercontent.com/7277662/110915102-15772080-82cc-11eb-88a4-2c0cb1838508.png">
 <img width="360" alt="Screen Shot 2020-08-20 at 6 16 43 PM" src="https://user-images.githubusercontent.com/7277662/110915115-18721100-82cc-11eb-81d2-712de0a86bb4.png">
   <img width="360" alt="Screen Shot 2020-03-03 at 1 25 18 PM" src="https://user-images.githubusercontent.com/7277662/110915127-1ad46b00-82cc-11eb-9e63-74bee0eae34e.png">
+  <img width="360" alt="Screen Shot 2020-08-20 at 6 16 43 PM" src="https://user-images.githubusercontent.com/7277662/111194435-6e6ae100-8578-11eb-9cdc-628419a24005.png">
+  <img width="360" alt="Screen Shot 2020-03-03 at 1 25 18 PM" src="https://user-images.githubusercontent.com/7277662/111194451-71fe6800-8578-11eb-8144-4acaf408e5b6.png">
 </p>
 
 ## Getting Started
