@@ -270,7 +270,7 @@ class _JournalOverviewCardState extends State<JournalOverviewCard> with SingleTi
               borderRadius: BorderRadius.circular(12),
               child: Container(
                   child: Hero(
-                tag: widget.journal.id,
+                tag: widget.journal.id ?? widget.journal.createdDate.toString(),
                 child: Material(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
                   child: mainPart,

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:jiba/resources/shared_prefs_provider.dart';
 import 'package:jiba/ui/password_setting_page.dart';
@@ -30,9 +32,13 @@ class _SettingsPageState extends State<SettingsPage> {
         children: [
           FutureBuilder(future: SharedPreferencesProvider.getPassword(),
           builder: (_, snapshot){
-            return SwitchListTile(title: Text('密碼'),value: snapshot.data != null, onChanged: (val){
+            return SwitchListTile(title: Text('密碼', style: TextStyle(color: foregroundColor),),value: snapshot.data != null, onChanged: (val){
               if(val){
-                Navigator.push(context, MaterialPageRoute(builder: (_)=>PasswordSettingPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (_)=>PasswordSettingPage())).then((value){
+                  setState(() {
+
+                  });
+                });
               }else{
                 SharedPreferencesProvider.setPassword(null);
 
